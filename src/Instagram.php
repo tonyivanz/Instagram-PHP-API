@@ -190,12 +190,12 @@ class Instagram
      * Get user recent media.
      *
      * @param int|string $id Instagram user ID
-     * @param int $maxid The maximum ID of returned results
+     * @param int $max_id The maximum ID of returned results
      * @param int $limit Limit of returned results
      *
      * @return mixed
      */
-    public function getUserMedia($id = 'self', $limit = 0, $maxid = 0)
+    public function getUserMedia($id = 'self', $limit = 0, $max_id = 0)
     {
         $params = array();
 
@@ -203,8 +203,8 @@ class Instagram
             $params['count'] = $limit;
         }
         
-        if ($maxid > 0) {
-            $params['maxid'] = $maxid;
+        if ($max_id > 0) {
+            $params['max_id'] = $max_id;
         }
 
         return $this->_makeCall('users/' . $id . '/media/recent', strlen($this->getAccessToken()), $params);
